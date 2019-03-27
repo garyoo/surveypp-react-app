@@ -10,6 +10,7 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.2",
+    "react-native-background-geolocation": "^3.0.0-rc.1",
     "react-native-elements": "^1.1.0",
     "react-native-vector-icons": "^6.4.2"
   },
