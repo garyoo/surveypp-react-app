@@ -7,11 +7,11 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import BackgroundGeolocation from "react-native-background-geolocation";
-
+import {Navigation} from 'react-native-navigation';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -22,9 +22,33 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+    constructor(props) {
+        super(props);
+        Navigation.events().bindComponent(this);
+    }
+
+    _PushLogin() {
+        /*
+        let push = this.props.navigator.push({
+            screen: 'Login'
+        });
+        */
+    }
     render() {
         return (
           <View style={styles.container}>
+              <View style={[{width: '50%', textAlign: 'center'}]}>
+              <Text></Text>
+              <Button
+                  title="로그인"
+                  color="#841584"
+                  accessibilityLabel="Learn more about this purple button"
+                  containerViewStyle={{width: "100%"}}
+                  onPress={this._PushLogin.bind(this)}
+              />
+              </View>
+          </View>
+              /*
             <Input
                 placeholder='BASIC INPUT'
             />
@@ -55,11 +79,11 @@ export default class App extends Component<Props> {
                 errorStyle={{ color: 'red' }}
                 errorMessage='ENTER A VALID ERROR HERE'
             />
-          </View>
+            */
         );
       }
 
-
+    /*
     componentWillMount() {
         ////
         // 1.  Wire up event-listeners
@@ -133,7 +157,7 @@ export default class App extends Component<Props> {
     onMotionChange(event) {
         console.log('[motionchange] -', event.isMoving, event.location);
     }
-
+    */
 }
 
 const styles = StyleSheet.create({
