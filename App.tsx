@@ -8,10 +8,13 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import BackgroundGeolocation from "react-native-background-geolocation";
 import {Navigation} from 'react-native-navigation';
+//import { setDefaultOptions } from './commons/Options';
+import { registerScreens } from './screens';
+import Login from './screens/Login';
+import {AppRegistry} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -20,19 +23,18 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+export default () => {
+    registerScreens();
+
+    AppRegistry.registerComponent('drivers', () => Login);
+};
+/*
+
 type Props = {};
 export default class App extends Component<Props> {
-    constructor(props) {
-        super(props);
-        Navigation.events().bindComponent(this);
-    }
 
     _PushLogin() {
-        /*
-        let push = this.props.navigator.push({
-            screen: 'Login'
-        });
-        */
+
     }
     render() {
         return (
@@ -40,7 +42,7 @@ export default class App extends Component<Props> {
               <View style={[{width: '50%', textAlign: 'center'}]}>
               <Text></Text>
               <Button
-                  title="로그인"
+                  title="로그인해주세요"
                   color="#841584"
                   accessibilityLabel="Learn more about this purple button"
                   containerViewStyle={{width: "100%"}}
@@ -48,42 +50,10 @@ export default class App extends Component<Props> {
               />
               </View>
           </View>
-              /*
-            <Input
-                placeholder='BASIC INPUT'
-            />
-
-            <Input
-                placeholder='INPUT WITH ICON'
-                leftIcon={{ type: 'font-awesome', name: 'chevron-left' }}
-            />
-
-            <Input
-                placeholder='INPUT WITH CUSTOM ICON'
-                leftIcon={
-                  <Icon
-                      name='user'
-                      size={24}
-                      color='black'
-                  />
-                }
-            />
-
-            <Input
-                placeholder='INPUT WITH SHAKING EFFECT'
-                shake={true}
-            />
-
-            <Input
-                placeholder='INPUT WITH ERROR MESSAGE'
-                errorStyle={{ color: 'red' }}
-                errorMessage='ENTER A VALID ERROR HERE'
-            />
-            */
         );
       }
 
-    /*
+
     componentWillMount() {
         ////
         // 1.  Wire up event-listeners
@@ -157,9 +127,9 @@ export default class App extends Component<Props> {
     onMotionChange(event) {
         console.log('[motionchange] -', event.isMoving, event.location);
     }
-    */
 }
-
+*/
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -178,3 +148,4 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+*/

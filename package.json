@@ -5,14 +5,23 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "tslint ./**/*.{ts,tsx}",
+    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
   "dependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.10",
+    "@types/react-native": "^0.57.42",
     "react": "16.8.3",
     "react-native": "0.59.2",
     "react-native-background-geolocation": "^3.0.0-rc.1",
     "react-native-elements": "^1.1.0",
-    "react-native-vector-icons": "^6.4.2"
+    "react-native-navigation": "^2.16.0",
+    "react-native-typescript-transformer": "^1.2.12",
+    "react-native-vector-icons": "^6.4.2",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.4000"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",
@@ -25,6 +34,24 @@
     "react-test-renderer": "16.8.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.jsx?$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true
+      }
+    }
   }
 }
